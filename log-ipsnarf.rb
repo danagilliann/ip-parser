@@ -8,9 +8,8 @@ def main()
   output = {}
 
   check_input(input)
-  array = parsing_file(input)
-  puts array
-  #match_input(array, output)
+  parsing_file(input, output)
+
   input.close
 end
 
@@ -21,7 +20,8 @@ def check_input(input)
   end 
 end
 
-def parsing_file(input)
+def parsing_file(input, output)
+  count = 0
   ip_regex = /\d{1,3}\.\d{1,3}\.\d{1,3}.\d{1,3}/
   ip_list = []
 
@@ -29,12 +29,13 @@ def parsing_file(input)
     ip_list << line.scan(ip_regex)
   end
 
-  return ip_list
+  puts ip_list
+
+  #counts_input(ip_address, output)
 end
 
-def match_input(input, output)
+def counts_input(input, output)
   count = 0
-  ip_regex = /\d{1,3}\.\d{1,3}\.\d{1,3}.\d{1,3}/
 
   input.each do |element|
     count += input.count(element)
