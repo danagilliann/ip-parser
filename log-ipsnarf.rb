@@ -5,23 +5,22 @@
 require 'resolv'
 
 def main()
-  #input = File.open(log, 'r')
+  input = File.open('log', 'r')
   #output = File.open(output, 'a+')
-  input = ['180.33.45.2', '180.33.45.2' '1.9.332.4', '44.256.34.23']
   output = {}
 
   match_input(input, output)
-
+  input.close
   #check_input(input)
   #open(input, output)
 end
 
-#def check_input(input)
-#  if !File.exists?(input)
-#    puts 'The input file does not exist!'
-#    exit
-#  end 
-#end
+def check_input(input)
+  if !File.exists?(input)
+    puts 'The input file does not exist!'
+    exit
+  end 
+end
 
 def match_input(input, output)
   count = 0
