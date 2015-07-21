@@ -24,11 +24,13 @@ end
 #end
 
 def match_input(input, output)
+  count = 0
   ip_regex = /\d{1,3}\.\d{1,3}\.\d{1,3}.\d{1,3}/
 
   input.each do |element|
     if element.match ip_regex
-      output[element] += 1
+      count += input.count(element)
+      output[element] = count
     end 
   end
   puts output
