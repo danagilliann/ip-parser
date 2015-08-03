@@ -2,22 +2,16 @@
 # By the way, this takes around 2hours for a file that has around 160,000 lines :/
 
 def main()
-  input = File.open('log', 'r') # This is where the script opens the file
-  #output = File.open(output, 'a+')
+  input = File.open('log1', 'r') # This is where the script opens the file
+  #output = File.open('output', 'a+')
   output = {}
 
-  check_input(input)
+  # check_input(input)
   ip_list = parsing_file(input)
   counts_input(ip_list, output)
 
   input.close
-end
-
-def check_input(input)
-  if !File.exists?(input)
-    puts 'The input file does not exist!'
-    exit
-  end 
+  # output.close
 end
 
 def parsing_file(input)
@@ -39,8 +33,11 @@ def counts_input(input, output)
   input.each do |element|
     count += input.count(element)
     output[element] = count 
+
     count = 0
+
   end
+
   puts output
 end  
 
