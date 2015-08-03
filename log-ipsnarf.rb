@@ -1,14 +1,14 @@
 # Make a method for parsing the input
-
-require 'ipaddr'
+# By the way, this takes around 2hours for a file that has around 160,000 lines :/
 
 def main()
-  input = File.open('log', 'r')
+  input = File.open('log', 'r') # This is where the script opens the file
   #output = File.open(output, 'a+')
   output = {}
 
   check_input(input)
-  parsing_file(input, output)
+  ip_list = parsing_file(input)
+  counts_input(ip_list, output)
 
   input.close
 end
@@ -20,18 +20,17 @@ def check_input(input)
   end 
 end
 
-def parsing_file(input, output)
+def parsing_file(input)
   count = 0
   ip_regex = /\d{1,3}\.\d{1,3}\.\d{1,3}.\d{1,3}/
   ip_list = []
+  ip_address = ''
 
   input.each do |line|
     ip_list << line.scan(ip_regex)
   end
 
-  puts ip_list
-
-  #counts_input(ip_address, output)
+  return ip_list
 end
 
 def counts_input(input, output)
@@ -40,6 +39,7 @@ def counts_input(input, output)
   input.each do |element|
     count += input.count(element)
     output[element] = count 
+    count = 0
   end
   puts output
 end  
